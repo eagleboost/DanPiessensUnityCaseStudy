@@ -29,7 +29,7 @@ namespace DanPiessensCaseStudy.Unity
       foreach (PropertyInfo propertyInfo in t.GetPropertiesHierarchical().Where<PropertyInfo>((Func<PropertyInfo, bool>)(p => p.CanWrite)))
       {
         MethodInfo propertyMethod = propertyInfo.SetMethod ?? propertyInfo.GetMethod;
-        if (!propertyMethod.IsStatic && propertyInfo.GetIndexParameters().Length == 0 && propertyInfo.IsDefined(typeof(DependencyAttribute), false))
+        if (!propertyMethod.IsStatic && propertyInfo.GetIndexParameters().Length == 0 && propertyInfo.IsDefined(typeof(DependencyResolutionAttribute), false))
           yield return this.CreateSelectedProperty(context, propertyInfo);
       }
     }
